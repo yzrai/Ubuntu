@@ -5,27 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ubuntu 官方介绍页</title>
 
-  <!-- 引入 AOS 滚动动画库 -->
+  <!-- 引入 AOS 滑动动画 -->
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
   <style>
-    body, html {
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+    body, html {
       font-family: "Ubuntu", "Helvetica Neue", Arial, sans-serif;
       background: #0a0a0a;
       color: #eee;
       overflow-x: hidden;
     }
-
+    #background {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: url('https://images.pexels.com/photos/163125/board-printed-circuit-board-computer-electronics-163125.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') no-repeat center center/cover;
+      filter: brightness(0.4) blur(4px);
+      z-index: -2;
+    }
     #particles-js {
       position: fixed;
       width: 100%;
       height: 100%;
       z-index: -1;
-      background: radial-gradient(circle at center, #1b1b1b 0%, #000000 100%);
     }
-
     nav {
       position: sticky;
       top: 0;
@@ -36,50 +44,39 @@
       align-items: center;
       justify-content: space-between;
       padding: 0.5rem 2rem;
-      z-index: 100;
+      z-index: 10;
     }
-
     nav img {
       height: 40px;
     }
-
     nav ul {
       list-style: none;
       display: flex;
       gap: 1.5rem;
-      margin: 0;
-      padding: 0;
     }
-
     nav ul li a {
       color: #ff784e;
       text-decoration: none;
       font-weight: bold;
       transition: color 0.3s;
     }
-
     nav ul li a:hover {
-      color: #fff;
+      color: #ffffff;
     }
-
     header {
       text-align: center;
       padding: 6rem 1rem 3rem;
-      animation: fadeIn 2s ease-in;
     }
-
     header h1 {
       font-size: 4rem;
       color: #ff5722;
       text-shadow: 0 0 10px #ff5722;
-      margin-bottom: 1rem;
     }
-
     header p {
       font-size: 1.2rem;
+      margin-top: 1rem;
       color: #ccc;
     }
-
     .download-btn {
       margin-top: 2rem;
       padding: 0.8rem 2rem;
@@ -92,78 +89,62 @@
       transition: background 0.4s, box-shadow 0.4s;
       box-shadow: 0 0 10px #ff5722, 0 0 20px #ff784e;
     }
-
     .download-btn:hover {
       background: #ff784e;
-      box-shadow: 0 0 15px #ff784e, 0 0 30px #ff5722;
+      box-shadow: 0 0 20px #ff784e, 0 0 40px #ff5722;
     }
-
     .section {
       max-width: 1000px;
-      margin: 2rem auto;
-      background: rgba(255, 87, 34, 0.1);
+      margin: 3rem auto;
+      background: rgba(255,255,255,0.05);
       backdrop-filter: blur(10px);
       border-radius: 20px;
       padding: 2rem;
-      box-shadow: 0 8px 32px rgba(255, 87, 34, 0.25);
+      box-shadow: 0 8px 32px rgba(255, 255, 255, 0.1);
     }
-
     .section h2 {
       color: #ff784e;
       margin-bottom: 1rem;
       text-shadow: 0 0 5px #ff784e;
     }
-
     .section p, .section li {
       line-height: 1.8;
       font-size: 1.1rem;
       color: #ddd;
     }
-
     .section a {
       color: #ff5722;
       text-decoration: underline;
       transition: color 0.3s;
     }
-
     .section a:hover {
       color: #ff784e;
     }
-
     .features {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 1.5rem;
       margin-top: 2rem;
     }
-
     .feature {
-      background: rgba(255, 87, 34, 0.2);
+      background: rgba(255,255,255,0.08);
       padding: 1.5rem;
       border-radius: 15px;
       text-align: center;
       transition: transform 0.4s ease, background 0.4s;
       cursor: pointer;
     }
-
     .feature:hover {
       transform: translateY(-8px);
-      background: rgba(255, 87, 34, 0.3);
+      background: rgba(255,255,255,0.12);
     }
-
     footer {
       text-align: center;
       padding: 2rem 1rem;
       font-size: 0.9rem;
-      color: #999;
-      margin-top: 3rem;
+      color: #aaa;
+      margin-top: 4rem;
     }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px);}
-      to { opacity: 1; transform: translateY(0);}
-    }
-
     @media (max-width: 600px) {
       header h1 {
         font-size: 2.5rem;
@@ -176,10 +157,9 @@
 </head>
 <body>
 
-<!-- 粒子背景 -->
+<div id="background"></div>
 <div id="particles-js"></div>
 
-<!-- 导航栏 -->
 <nav>
   <img src="https://assets.ubuntu.com/v1/29985a98-ubuntu-logo32.png" alt="Ubuntu Logo">
   <ul>
@@ -200,7 +180,7 @@
 
 <section class="section" id="about" data-aos="fade-up">
   <h2>什么是 Ubuntu？</h2>
-  <p>Ubuntu 是一个基于 Linux 的自由开源操作系统，提供简单、优雅且强大的桌面与服务器体验。</p>
+  <p>Ubuntu 是一个基于 Linux 的自由开源操作系统，专注于简洁、美观和强大的桌面与服务器体验。</p>
 </section>
 
 <section class="section" id="features" data-aos="fade-right">
@@ -208,19 +188,19 @@
   <div class="features">
     <div class="feature" data-aos="zoom-in">
       <h3>开源自由</h3>
-      <p>开放透明，社区驱动，人人可用。</p>
+      <p>完全开放透明，社区驱动，每个人都能参与改进。</p>
     </div>
     <div class="feature" data-aos="zoom-in" data-aos-delay="100">
       <h3>安全稳定</h3>
-      <p>系统定期更新，默认防火墙，安全无忧。</p>
+      <p>默认防火墙，长期支持版本，保持系统稳定与安全。</p>
     </div>
     <div class="feature" data-aos="zoom-in" data-aos-delay="200">
       <h3>应用丰富</h3>
-      <p>自带应用商店，数千软件一键安装。</p>
+      <p>Snap 应用商店提供海量软件，一键安装更新。</p>
     </div>
     <div class="feature" data-aos="zoom-in" data-aos-delay="300">
       <h3>全球社区</h3>
-      <p>遇到问题？全球上百万开发者可以帮你。</p>
+      <p>拥有庞大的全球社区支持，资料齐全，遇到问题迅速解决。</p>
     </div>
   </div>
 </section>
@@ -228,17 +208,17 @@
 <section class="section" id="install" data-aos="fade-left">
   <h2>Ubuntu 安装教程</h2>
   <ol>
-    <li>访问 <a href="https://ubuntu.com/download" target="_blank">Ubuntu下载页面</a>，选择版本下载 ISO 镜像。</li>
-    <li>使用 <a href="https://rufus.ie/" target="_blank">Rufus</a> 制作启动U盘。</li>
-    <li>重启电脑，进入 BIOS 设置U盘启动。</li>
-    <li>选择 “Try Ubuntu” 体验模式，确认后点击 “Install Ubuntu”。</li>
-    <li>根据向导分区、设置账户，等待安装完成！</li>
+    <li>访问 <a href="https://ubuntu.com/download" target="_blank">Ubuntu 下载页</a>，选择版本下载 ISO 镜像。</li>
+    <li>使用 <a href="https://rufus.ie/" target="_blank">Rufus</a> 制作启动盘。</li>
+    <li>重启电脑，进入 BIOS 设置 U盘启动。</li>
+    <li>选择 "Try Ubuntu" 或直接 "Install Ubuntu" 进入安装界面。</li>
+    <li>根据提示进行分区、账户设置，点击安装，稍等片刻即可完成！</li>
   </ol>
-  <p>完成后，即可享受 Ubuntu 带来的全新体验！</p>
+  <p>安装完成后，欢迎体验全新的 Ubuntu 世界！</p>
 </section>
 
 <footer data-aos="fade-up">
-  © 2025 Ubuntu 中文爱好者 | 本页纯属学习演示
+  © 2025 Ubuntu 中文爱好者 | 本页面仅供学习展示
 </footer>
 
 <!-- 粒子效果 -->
@@ -246,7 +226,7 @@
 <script>
 particlesJS("particles-js", {
   "particles": {
-    "number": { "value": 90, "density": { "enable": true, "value_area": 800 } },
+    "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
     "color": { "value": "#ff5722" },
     "shape": { "type": "circle" },
     "opacity": { "value": 0.5 },
@@ -258,7 +238,7 @@ particlesJS("particles-js", {
       "opacity": 0.4,
       "width": 1
     },
-    "move": { "enable": true, "speed": 2.5 }
+    "move": { "enable": true, "speed": 2 }
   },
   "interactivity": {
     "events": {
@@ -270,12 +250,10 @@ particlesJS("particles-js", {
 });
 </script>
 
-<!-- AOS 滚动动画 -->
+<!-- AOS 动画初始化 -->
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 <script>
-  AOS.init({
-    duration: 1200,
-  });
+  AOS.init({ duration: 1200 });
 </script>
 
 </body>
